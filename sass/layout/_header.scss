@@ -1,0 +1,99 @@
+@use "../helpers/helpers" as *;
+
+/* Start Header */
+%d-flex-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header {
+  padding: 20px;
+  min-height: 95px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+
+  .container {
+    @extend %d-flex-header;
+    gap: 20px;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+
+  nav {
+    @extend %d-flex-header;
+    gap: 30px;
+    justify-content: flex-end;
+    flex-grow: 1;
+
+    .toggle-menu {
+      color: $main-color;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      display: none;
+
+      @include breakpoint-down(sm) {
+        display: block;
+      }
+
+      &:hover + ul {
+        display: block;
+        position: absolute;
+        background-color: $secondary-color;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        li {
+          padding: 20px;
+          text-align: center;
+        }
+      }
+    }
+    ul {
+      @extend %d-flex-header;
+      gap: 40px;
+      display: none;
+
+      @include breakpoint-up(sm) {
+        display: flex;
+      }
+
+      li a {
+        color: white;
+        font-weight: 600;
+        font-size: 16px;
+
+        &:hover {
+          color: $main-color;
+        }
+      }
+    }
+
+    .search-bar {
+      @include breakpoint-down(lg) {
+        display: none;
+      }
+
+      [type="text"] {
+        border: solid 2px $main-color;
+        padding: 6px 20px;
+        border-radius: 50px;
+        background-color: transparent;
+        font-weight: 600;
+        color: white;
+        outline: none;
+
+        &::placeholder {
+          text-align: right;
+          color: white;
+        }
+      }
+    }
+  }
+}
+/* End Header */

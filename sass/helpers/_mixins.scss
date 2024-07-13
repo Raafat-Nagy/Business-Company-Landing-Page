@@ -1,0 +1,14 @@
+@use "./variables" as *;
+
+@mixin center-flex() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin center-translate() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,34 @@
+@use "./variables" as *;
+
+@function calcBreakpoint($point) {
+  $breakpoint: 0;
+  @if ($point == "sm") {
+    $breakpoint: $breakpoint-sm;
+  } @else if ($point == "md") {
+    $breakpoint: $breakpoint-md;
+  } @else if ($point == "lg") {
+    $breakpoint: $breakpoint-lg;
+  } @else if ($point == "xl") {
+    $breakpoint: $breakpoint-xl;
+  }
+
+  @return $breakpoint;
+}
+
+// Mixin for min-width breakpoints
+@mixin breakpoint-up($point) {
+  $breakpoint: calcBreakpoint($point);
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Mixin for max-width breakpoints
+@mixin breakpoint-down($point) {
+  $breakpoint: calcBreakpoint($point);
+  // Decrement point by 0.02px to use max-width
+  $breakpoint: #{$breakpoint - 0.02px};
+  @media (max-width: $breakpoint) {
+    @content;
+  }
+}
