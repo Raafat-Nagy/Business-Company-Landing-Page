@@ -135,6 +135,7 @@ header nav .toggle-menu:hover + ul li {
   text-align: center;
 }
 header nav ul {
+  z-index: 10;
   gap: 40px;
   display: none;
 }
